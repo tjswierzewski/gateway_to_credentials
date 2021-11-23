@@ -4,4 +4,7 @@ module.exports = {
     return config;
   },
   reactStrictMode: true,
+  images: {
+    domains: ["gateway-to-blockchain-assets-development.s3.amazonaws.com"],
+  },
 };

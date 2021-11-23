@@ -1,11 +1,15 @@
 import axios from "axios";
-import Layout from "../../utils/components/layout";
+import CredentialTile from "../../components/credentialTile";
+import Layout from "../../components/layout";
 export default function Index({ credentials }) {
   const credentialList = credentials.map((credential) => {
     return (
-      <div key={credential.id}>
-        <p>{credential.title}</p>
-      </div>
+      <CredentialTile
+        key={credential.id}
+        title={credential.title}
+        description={credential.description}
+        image={credential.image.formats.small}
+      ></CredentialTile>
     );
   });
   return (
