@@ -1,4 +1,5 @@
 import axios from "axios";
+import Layout from "../../utils/components/layout";
 export default function Index({ credentials }) {
   const credentialList = credentials.map((credential) => {
     return (
@@ -7,7 +8,11 @@ export default function Index({ credentials }) {
       </div>
     );
   });
-  return <div>{credentialList}</div>;
+  return (
+    <div>
+      <Layout>{credentialList}</Layout>
+    </div>
+  );
 }
 
 export async function getStaticProps() {
