@@ -11,7 +11,7 @@ export default function Index({ credentials }) {
 }
 
 export async function getStaticProps() {
-  const res = await axios.get("http://localhost:1337/credentials");
+  const res = await axios.get("credentials");
   const credentials = res.data;
   return { props: { credentials } };
 }
