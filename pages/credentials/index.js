@@ -9,6 +9,7 @@ export default function Index({ credentials }) {
         title={credential.title}
         description={credential.description}
         image={credential.image.formats.small}
+        slug={credential.slug}
       ></CredentialTile>
     );
   });
