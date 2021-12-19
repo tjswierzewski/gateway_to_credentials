@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  padding: 0.5rem;
+  max-height: 10rem;
+}
+
+.hidden {
+  display: none;
+  justify-content: space-between;
+}
+
+.button:hover {
+  text-decoration: underline;
+}

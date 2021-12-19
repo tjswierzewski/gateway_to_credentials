@@ -13,11 +13,7 @@ export default function Index({ credentials }) {
       ></CredentialTile>
     );
   });
-  return (
-    <div>
-      <Layout>{credentialList}</Layout>
-    </div>
-  );
+  return <div>{credentialList}</div>;
 }
 
 export async function getStaticProps() {
