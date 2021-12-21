@@ -1,4 +1,4 @@
-import { randomAsHex } from "@polkadot/util-crypto";
+import axios from "axios";
 import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -14,18 +14,15 @@ export default function Layout({ children }) {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const input = randomAsHex(16);
-    const output = await window.kilt.sporran.signWithDid(input);
+    const { data } = await axios.post("/auth/local");
+    console.log(data.token);
+    const output = await window.kilt.sporran.signWithDid(data.token);
 
-    const method = "POST";
-    const url = "/api/validate-signature";
-    const body = JSON.stringify({ output, input });
-    const headers = { ContentType: "application/json" };
+    const res = await axios.post("/auth/verify", output, {
+      headers: { Authorization: `Bearer ${data.token}` },
+    });
 
-    console.log(body);
-
-    const res = await fetch(url, { method, headers, body });
-    if (res.ok) console.log("success");
+    if (res.status === 200) console.log(res);
     else console.log("error");
   };
 
