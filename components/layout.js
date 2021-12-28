@@ -14,13 +14,10 @@ export default function Layout({ children }) {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const { data } = await axios.post("/auth/local");
-    console.log(data.token);
-    const output = await window.kilt.sporran.signWithDid(data.token);
+    const { data } = await axios.get("/challenge");
+    const output = await window.kilt.sporran.signWithDid(data);
 
-    const res = await axios.post("/auth/verify", output, {
-      headers: { Authorization: `Bearer ${data.token}` },
-    });
+    const res = await axios.post("/verify", output, { withCredentials: true });
 
     if (res.status === 200) console.log(res);
     else console.log("error");
