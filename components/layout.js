@@ -19,7 +19,9 @@ export default function Layout({ children }) {
 
     const res = await axios.post("/verify", output, { withCredentials: true });
 
-    if (res.status === 200) console.log(res);
+    const user = res.data;
+
+    if (res.status === 200) console.log(user);
     else console.log("error");
   };
 
