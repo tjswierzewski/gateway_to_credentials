@@ -13,6 +13,7 @@ export const ALL_CREDENTIALS_QUERY = gql`
         width
         height
         url(size: sm)
+        sizesMeta
       }
       slug
     }

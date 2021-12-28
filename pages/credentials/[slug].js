@@ -13,7 +13,8 @@ export const CREDENTIAL_QUERY = gql`
         id
         width
         height
-        url(size: sm)
+        url(size: md)
+        sizesMeta
       }
       slug
     }
@@ -31,7 +32,12 @@ export default function Credential({ credential }) {
   const image = credential.image;
   return (
     <div>
-      <Image src={image.url} width={image.width} height={image.height} alt={image.name} />
+      <Image
+        src={image.url}
+        width={image.sizesMeta.md.width}
+        height={image.sizesMeta.md.height}
+        alt={image.name}
+      />
       <h3>{credential.title}</h3>
       <p>{credential.description}</p>
     </div>
