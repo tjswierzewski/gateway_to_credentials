@@ -1,9 +1,5 @@
-import { randomAsHex } from "@polkadot/util-crypto";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
-import getProvider from "../lib/getProvider";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {

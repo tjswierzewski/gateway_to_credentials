@@ -1,7 +1,7 @@
-import { gql } from "@apollo/client";
 import axios from "axios";
+import { gql } from "graphql-request";
 import Image from "next/image";
-import { initializeApollo } from "../../lib/apollo-client";
+import { initializeGraphQL } from "../../lib/graphql-client";
 
 export const CREDENTIAL_QUERY = gql`
   query Credential($slug: String!) {
@@ -45,19 +45,16 @@ export default function Credential({ credential }) {
 }
 
 export async function getStaticProps({ params }) {
-  const apolloClient = initializeApollo();
-  const { data } = await apolloClient.query({
-    query: CREDENTIAL_QUERY,
-    variables: { slug: params.slug },
-  });
+  const graphQLClient = initializeGraphQL();
+  const data = await graphQLClient.request(CREDENTIAL_QUERY, { slug: params.slug });
   return {
     props: data,
   };
 }
 
 export async function getStaticPaths() {
-  const apolloClient = initializeApollo();
-  const { data } = await apolloClient.query({ query: CREDENTIALS_PATHS_QUERY });
+  const graphQLClient = initializeGraphQL();
+  const data = await graphQLClient.request(CREDENTIALS_PATHS_QUERY);
   const { credentials } = data;
   const paths = credentials.map((credential) => {
     return { params: { slug: credential.slug } };

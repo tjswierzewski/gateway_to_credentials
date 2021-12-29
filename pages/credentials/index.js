@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
+import { gql } from "graphql-request";
 import CredentialTile from "../../components/credentialTile";
-import { initializeApollo } from "../../lib/apollo-client";
+import { initializeGraphQL } from "../../lib/graphql-client";
 
 export const ALL_CREDENTIALS_QUERY = gql`
   query allCredentials {
@@ -36,8 +36,7 @@ export default function Index({ credentials }) {
 }
 
 export async function getStaticProps() {
-  const apolloClient = initializeApollo();
-
-  const { data } = await apolloClient.query({ query: ALL_CREDENTIALS_QUERY });
+  const graphQLClient = initializeGraphQL();
+  const data = await graphQLClient.request(ALL_CREDENTIALS_QUERY);
   return { props: data };
 }

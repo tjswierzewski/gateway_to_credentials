@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/CredentialTile.module.css";
 export default function CredentialTile({ title, description, image, slug }) {
-  const link = `credentials/${slug}`;
+  const link = `/credentials/${slug}`;
   return (
     <div className={styles.flexbox}>
       <Image
