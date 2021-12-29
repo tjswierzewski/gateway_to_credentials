@@ -27,7 +27,7 @@ export default function Layout({ children }) {
 
   const handleLogInClick = async (e) => {
     e.preventDefault();
-    const { data } = await axios.get("/challenge");
+    const { data } = await axios.get("/challenge", { withCredentials: true });
     const output = await window.kilt.sporran.signWithDid(data);
 
     const res = await axios.post("/verify", output, { withCredentials: true });
