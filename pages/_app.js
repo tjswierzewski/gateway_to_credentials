@@ -7,7 +7,7 @@ import { initializeGraphQL } from "../lib/graphql-client";
 import useUser from "../lib/useUser";
 import "../styles/globals.css";
 
-axios.defaults.baseURL = process.env.CMS_URL || "http://localhost:3006/";
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_CMS_URL;
 
 const client = initializeGraphQL();
 
