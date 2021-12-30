@@ -7,7 +7,7 @@ module.exports = {
   images: {
     domains: [
       "lighthouse-the-asset-storage-dev.s3.amazonaws.com",
-      "gateway-to-blockchain-assets-production.s3.amazonaws.com",
+      "lighthouse-the-asset-storage-prod.s3.amazonaws.com",
     ],
   },
 };
